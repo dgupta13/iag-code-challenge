@@ -1,3 +1,4 @@
+import React, { Fragment } from "react";
 import { useCallback } from "react";
 import { useMappedState } from "redux-react-hook";
 import { UserInput } from "../UserInput/UserInput";
@@ -16,15 +17,14 @@ export const UserAttempts = () => {
     inputPswrd.length > 0 ? (
       inputPswrd.map((item, index) => {
         return (
-          <>
+          <React.Fragment key={item + index}>
             <UserInput
               value={item.split("").join(" ")}
               readOnly={true}
               highlight={highlight}
-              key={item + index}
             />
             <br /> <br />
-          </>
+          </React.Fragment>
         );
       })
     ) : (

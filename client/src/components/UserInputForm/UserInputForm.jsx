@@ -10,7 +10,7 @@ import { submitPassword } from "./modules/UserInputFormApi";
  */
 export const UserInputForm = () => {
   const dispatch = useDispatch();
-  const [inputValue, setInputValue] = useState();
+  const [inputValue, setInputValue] = useState("");
   const mapState = useCallback(
     (state) => ({
       hint: state.pwsrdHint.hint,
@@ -32,11 +32,16 @@ export const UserInputForm = () => {
           answer: inputValue,
         })
       );
+    setInputValue("");
   };
 
   return (
     <StyledPwsrdDiv>
-      <UserInput text="Type here" handleChange={handleChangeValue} />
+      <UserInput
+        value={inputValue}
+        text="Type here"
+        handleChange={handleChangeValue}
+      />
       <br />
       <StyledButton onClick={handleButtonClick}>{SUBMIT}</StyledButton>
     </StyledPwsrdDiv>
